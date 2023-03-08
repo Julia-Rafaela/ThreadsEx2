@@ -9,9 +9,12 @@ import java.util.Random;
 
 public class Threadmatriz extends Thread {
 
-	private int  Threadmat;
-	public Threadmatriz(int  Threadmat) {
-		this. Threadmat = Threadmat;
+	private int Threadmat;
+	
+	 private int[] linha;
+	public Threadmatriz(int Threadmat,int [] linha ) {
+		this. Threadmat =Threadmat;
+		this.linha=linha;;
 	}
 	@Override
 	public void run() {
@@ -21,32 +24,16 @@ public class Threadmatriz extends Thread {
 
 	
 		private void Tmatriz() {
-			int vet [] = new int[5];
-			int aux=0;
-
-		int  matriz [][]= new int [3][5];
-		Random aleatorio = new Random();
-		for(int l=0; l < 3; l++ ) {
-			for(int c=0; c < 5; c++) {
-				matriz[l][c]= aleatorio.nextInt(51);
 			
-			}	
-		}
-		for(int Threadmat=0; Threadmat < 3; Threadmat++ ) {
-			Thread threadm= new Threadmatriz(Threadmat);
-			for(int c=0; c < 5; c++) {
-				 aux= aux + matriz [Threadmat][c];
-				  
+			int somalinhas=0;
+			
+			for(int line: linha ) {
+				somalinhas= somalinhas+ line;
+					  
+				  }
+				  System.out.println("a soma da linha" +" "+ (Threadmat + 1)+ " = "+somalinhas);
 				
-			 }
-			 vet[Threadmat] = aux;
-			  System.out.println("a soma da linha" +" " +Threadmat+ " = "+vet[Threadmat]);
-			aux =0;  
 			}
-		
-		
- 
-		
-	}
+
 	
 }

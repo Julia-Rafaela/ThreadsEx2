@@ -1,21 +1,26 @@
 package view;
 
+import java.util.Random;
+
 import controller.Threadmatriz;
-//2) Fazer uma aplicação que insira números
-//aleatórios em uma matriz 3 x 5 e tenha 3
-//chamadas de Threads, onde cada uma calcula a
-//soma dos valores de cada linha, imprimindo a
-//identificação da linha e o resultado da soma.
+
 
 public class Principal {
-
+	static int matriz [] [] = new int[3][5];
 	public static void main(String[] args) {
-		for(int Threadmat=0; Threadmat < 1; Threadmat++ ) {
+		Random aleatorio = new Random();
+		for(int l=0; l < 3; l++ ) {
+			for(int c=0; c < 5; c++) {
+				matriz[l][c]= aleatorio.nextInt(51);
 			
+			}	
 		
-				Thread threadm= new Threadmatriz(Threadmat);
-				threadm.start();
-		}
+		 Thread Threadlinha = new 	Threadmatriz (l,matriz[l]);
+	    
+	      Threadlinha.start();
+	      
+		} 
 	  }
-	
 }
+	
+
